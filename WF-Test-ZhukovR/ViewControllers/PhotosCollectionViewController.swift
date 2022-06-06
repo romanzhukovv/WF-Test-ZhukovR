@@ -84,7 +84,7 @@ extension PhotosCollectionViewController: UISearchResultsUpdating {
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        searchPhotosData(query: searchController.searchBar.text ?? "")
+//        searchPhotosData(query: searchController.searchBar.text ?? "")
     }
 }
 
@@ -108,7 +108,9 @@ extension PhotosCollectionViewController {
             switch result {
             case .success(let data):
                 self.searchedPhotos = data
-                self.collectionView.reloadData()
+                if query.count > 0 {
+                    self.collectionView.reloadData()
+                }
             case .failure(let error):
                 print(error)
             }
