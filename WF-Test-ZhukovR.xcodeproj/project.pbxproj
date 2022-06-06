@@ -15,6 +15,9 @@
 		FC1A39A9284D203800A01B72 /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1A39A8284D203800A01B72 /* PhotosCollectionViewController.swift */; };
 		FC7670B2284D23810090BBE8 /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7670B1284D23810090BBE8 /* PhotoViewCell.swift */; };
 		FCC654B4284E69D400608736 /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC654B3284E69D400608736 /* FavoriteListViewController.swift */; };
+		FCF36514284E6B110012D6F2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF36513284E6B110012D6F2 /* NetworkManager.swift */; };
+		FCF36516284E6B520012D6F2 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF36515284E6B520012D6F2 /* Photo.swift */; };
+		FCF36518284E9EDE0012D6F2 /* SearchedPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF36517284E9EDE0012D6F2 /* SearchedPhotos.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		FC1A39A8284D203800A01B72 /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
 		FC7670B1284D23810090BBE8 /* PhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
 		FCC654B3284E69D400608736 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
+		FCF36513284E6B110012D6F2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		FCF36515284E6B520012D6F2 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		FCF36517284E9EDE0012D6F2 /* SearchedPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedPhotos.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,8 @@
 		FC1A3991284C089F00A01B72 /* WF-Test-ZhukovR */ = {
 			isa = PBXGroup;
 			children = (
+				FCF36512284E6ADE0012D6F2 /* Services */,
+				FCF36511284E6AD80012D6F2 /* Models */,
 				FCC654B5284E69F600608736 /* SupportingFiles */,
 				FC113514284E68F700CC770E /* ViewControllers */,
 				FC1A399D284C08A000A01B72 /* LaunchScreen.storyboard */,
@@ -87,6 +95,23 @@
 				FC1A39A0284C08A000A01B72 /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		FCF36511284E6AD80012D6F2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FCF36515284E6B520012D6F2 /* Photo.swift */,
+				FCF36517284E9EDE0012D6F2 /* SearchedPhotos.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FCF36512284E6ADE0012D6F2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FCF36513284E6B110012D6F2 /* NetworkManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,8 +185,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC1A39A7284C090800A01B72 /* TabBarViewController.swift in Sources */,
+				FCF36516284E6B520012D6F2 /* Photo.swift in Sources */,
+				FCF36518284E9EDE0012D6F2 /* SearchedPhotos.swift in Sources */,
 				FC1A3997284C089F00A01B72 /* DetailViewController.swift in Sources */,
 				FCC654B4284E69D400608736 /* FavoriteListViewController.swift in Sources */,
+				FCF36514284E6B110012D6F2 /* NetworkManager.swift in Sources */,
 				FC1A3993284C089F00A01B72 /* AppDelegate.swift in Sources */,
 				FC1A39A9284D203800A01B72 /* PhotosCollectionViewController.swift in Sources */,
 				FC7670B2284D23810090BBE8 /* PhotoViewCell.swift in Sources */,
