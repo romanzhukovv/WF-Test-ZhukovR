@@ -11,9 +11,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        print("init detail")
+        view.backgroundColor = .purple
     }
 
-
+    deinit {
+        print("deinit detail")
+    }
 }
 
