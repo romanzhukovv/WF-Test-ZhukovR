@@ -8,9 +8,11 @@
 import Foundation
 
 struct Photo: Codable {
+    let created_at: String?
     let likes: Int
     let urls : Sizes
     let user: User
+    let downloads: Int?
 }
 
 struct Sizes: Codable {
@@ -20,4 +22,5 @@ struct Sizes: Codable {
 
 struct User: Codable {
     let name: String
+    let location: String?
 }

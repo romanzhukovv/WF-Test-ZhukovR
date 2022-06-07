@@ -42,10 +42,10 @@ class PhotosCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoViewCell
-        var photo = Photo(likes: 0, urls: Sizes(small: "", full: ""), user: User(name: ""))
+        var photo = Photo(created_at: "", likes: 0, urls: Sizes(small: "", full: ""), user: User(name: "", location: ""), downloads: 0)
         
         if isSearching {
-            photo = searchedPhotos?.results?[indexPath.row] ?? Photo(likes: 0, urls: Sizes(small: "", full: ""), user: User(name: ""))
+            photo = searchedPhotos?.results?[indexPath.row] ?? Photo(created_at: "", likes: 0, urls: Sizes(small: "", full: ""), user: User(name: "", location: ""), downloads: 0)
         } else {
             photo = photos[indexPath.row]
         }
@@ -58,7 +58,7 @@ class PhotosCollectionViewController: UICollectionViewController {
         let detailVC = DetailViewController()
         
         if self.isSearching {
-            detailVC.photo = self.searchedPhotos?.results?[indexPath.row] ?? Photo(likes: 0, urls: Sizes(small: "", full: ""), user: User(name: ""))
+            detailVC.photo = self.searchedPhotos?.results?[indexPath.row] ?? Photo(created_at: "", likes: 0, urls: Sizes(small: "", full: ""), user: User(name: "", location: ""), downloads: 0)
         } else {
             detailVC.photo = self.photos[indexPath.row]
         }
