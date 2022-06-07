@@ -41,6 +41,7 @@ class PhotosCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoViewCell
+        
         var photo = Photo(likes: 0, urls: Sizes(small: "", full: ""), user: User(name: ""))
         
         if isSearching {
@@ -55,6 +56,15 @@ class PhotosCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
+        
+        DispatchQueue.main.async {
+            if isSearching {
+                detailVC.photo = searchedPhotos?.results?[indexPath.row] ?? Photo(likes: 0, urls: Sizes(small: "", full: ""), user: User(name: ""))
+            } else {
+                detailVC.photo = photos[indexPath.row]
+            }
+        }
+        
         detailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)
     }
@@ -84,7 +94,7 @@ extension PhotosCollectionViewController: UISearchResultsUpdating {
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-//        searchPhotosData(query: searchController.searchBar.text ?? "")
+        searchPhotosData(query: searchController.searchBar.text ?? "")
     }
 }
 
@@ -108,9 +118,7 @@ extension PhotosCollectionViewController {
             switch result {
             case .success(let data):
                 self.searchedPhotos = data
-                if query.count > 0 {
-                    self.collectionView.reloadData()
-                }
+                self.collectionView.reloadData()
             case .failure(let error):
                 print(error)
             }

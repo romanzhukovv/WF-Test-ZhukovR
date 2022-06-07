@@ -8,11 +8,12 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    var photo: Photo?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("init detail")
-        view.backgroundColor = .purple
+//        print(photo?.urls.full)
     }
 
     deinit {
