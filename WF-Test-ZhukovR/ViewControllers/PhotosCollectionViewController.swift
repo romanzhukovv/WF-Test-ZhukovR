@@ -25,9 +25,10 @@ class PhotosCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.backgroundColor = .white
         collectionView!.register(PhotoViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        setupSearchController()
         fetchPhotosData()
+        setupSearchController()
     }
 
     // MARK: UICollectionViewDataSource
@@ -41,7 +42,6 @@ class PhotosCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoViewCell
-        
         var photo = Photo(likes: 0, urls: Sizes(small: "", full: ""), user: User(name: ""))
         
         if isSearching {
@@ -57,12 +57,10 @@ class PhotosCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
         
-        DispatchQueue.main.async {
-            if isSearching {
-                detailVC.photo = searchedPhotos?.results?[indexPath.row] ?? Photo(likes: 0, urls: Sizes(small: "", full: ""), user: User(name: ""))
-            } else {
-                detailVC.photo = photos[indexPath.row]
-            }
+        if self.isSearching {
+            detailVC.photo = self.searchedPhotos?.results?[indexPath.row] ?? Photo(likes: 0, urls: Sizes(small: "", full: ""), user: User(name: ""))
+        } else {
+            detailVC.photo = self.photos[indexPath.row]
         }
         
         detailVC.hidesBottomBarWhenPushed = true
@@ -94,7 +92,14 @@ extension PhotosCollectionViewController: UISearchResultsUpdating {
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        searchPhotosData(query: searchController.searchBar.text ?? "")
+        print("isEmpty \(searchBarIsEmpty)")
+        print("isActive \(searchController.isActive)")
+        
+        if isSearching {
+            searchPhotosData(query: searchController.searchBar.text ?? "")
+        } else if !searchController.isActive {
+            collectionView.reloadData()
+        }
     }
 }
 

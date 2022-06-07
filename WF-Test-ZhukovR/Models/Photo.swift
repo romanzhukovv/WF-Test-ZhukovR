@@ -7,17 +7,17 @@
 
 import Foundation
 
-struct Photo: Decodable {
+struct Photo: Codable {
     let likes: Int
     let urls : Sizes
     let user: User
 }
 
-struct Sizes: Decodable {
+struct Sizes: Codable {
     let small: String
     let full: String
 }
 
-struct User: Decodable {
+struct User: Codable {
     let name: String
 }
