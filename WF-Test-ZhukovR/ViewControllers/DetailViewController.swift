@@ -63,16 +63,16 @@ extension DetailViewController {
     private func setupUIComponets() {
         photoImageView.contentMode = .scaleAspectFit
         
-        authorNameLabel.text = photo.user.name
+        authorNameLabel.text = photo.user?.name
         authorNameLabel.textAlignment = .center
         
         createdDateLabel.text = photo.created_at
         createdDateLabel.textAlignment = .center
         
-        locationLabel.text = photo.user.location ?? "No location data"
+        locationLabel.text = photo.user?.location ?? "No location data"
         locationLabel.textAlignment = .center
         
-        downloadsCountLabel.text = "\(photo.downloads ?? 0)"
+        downloadsCountLabel.text = "\(photo.downloads)"
         downloadsCountLabel.textAlignment = .center
         
         verticalStackView.spacing = 15
@@ -96,11 +96,12 @@ extension DetailViewController {
     }
     
     private func fetchFullSizePhoto(photo: Photo) {
-        guard let url = URL(string: photo.urls.full) else { return }
+        guard let url = URL(string: photo.urls?.full ?? "") else { return }
         photoImageView.kf.setImage(with: url)
     }
     
     @objc private func favoriteButtonAction() {
+        StorageManager.shared.savePhoto(photo: photo)
         showAlert()
     }
     

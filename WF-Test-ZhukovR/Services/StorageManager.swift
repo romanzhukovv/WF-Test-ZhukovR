@@ -5,16 +5,18 @@
 //  Created by Roman Zhukov on 08.06.2022.
 //
 
-import Foundation
+import RealmSwift
 
 class StorageManager {
     static let shared = StorageManager()
     
-    private init() {
-        
-    }
+    let realm = try! Realm()
     
-    func savePhotoToFavorite(photo: Photo) {
-
+    private init() {}
+    
+    func savePhoto(photo: Photo) {
+        try! realm.write {
+            realm.add(photo)
+        }
     }
 }

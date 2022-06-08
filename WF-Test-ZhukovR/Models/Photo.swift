@@ -5,22 +5,22 @@
 //  Created by Roman Zhukov on 06.06.2022.
 //
 
-import Foundation
+import RealmSwift
 
-struct Photo: Codable {
-    let created_at: String?
-    let likes: Int
-    let urls : Sizes
-    let user: User
-    let downloads: Int?
+class Photo: Object, Codable {
+    @Persisted var created_at = ""
+    @Persisted var likes = 0
+    @Persisted var urls : Sizes?
+    @Persisted var user: User?
+    @Persisted var downloads = 0
 }
 
-struct Sizes: Codable {
-    let small: String
-    let full: String
+class Sizes: Object, Codable {
+    @Persisted var small = ""
+    @Persisted var full = ""
 }
 
-struct User: Codable {
-    let name: String
-    let location: String?
+class User: Object, Codable {
+    @Persisted var name = ""
+    @Persisted var location: String?
 }
