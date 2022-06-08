@@ -15,7 +15,6 @@ class StorageManager {
     }
     
     func savePhotoToFavorite(photo: Photo) {
-//        UserDefaults.standard.set(try? PropertyListEncoder().encode(photo), forKey: photo.)
-        UserDefaults.standard.dictionaryRepresentation().values
+
     }
 }

@@ -31,10 +31,10 @@ class FavoriteListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = DetailViewController()
-        detailVC.view.backgroundColor = .cyan
-        detailVC.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(detailVC, animated: true)
+//        let detailVC = DetailViewController()
+//        detailVC.view.backgroundColor = .cyan
+//        detailVC.hidesBottomBarWhenPushed = true
+//        navigationController?.pushViewController(detailVC, animated: true)
     }
 
 }

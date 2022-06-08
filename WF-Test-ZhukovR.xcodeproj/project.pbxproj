@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9AA0AB499D6A877729452E08 /* Pods_WF_Test_ZhukovR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99E70B0EF174FE8466E636C /* Pods_WF_Test_ZhukovR.framework */; };
 		FC1A3993284C089F00A01B72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1A3992284C089F00A01B72 /* AppDelegate.swift */; };
 		FC1A3997284C089F00A01B72 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1A3996284C089F00A01B72 /* DetailViewController.swift */; };
 		FC1A399C284C08A000A01B72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC1A399B284C08A000A01B72 /* Assets.xcassets */; };
@@ -22,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8397BCC8ECE8D88D661CA5E2 /* Pods-WF-Test-ZhukovR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WF-Test-ZhukovR.debug.xcconfig"; path = "Target Support Files/Pods-WF-Test-ZhukovR/Pods-WF-Test-ZhukovR.debug.xcconfig"; sourceTree = "<group>"; };
+		C50CF094C52E3B978783F949 /* Pods-WF-Test-ZhukovR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WF-Test-ZhukovR.release.xcconfig"; path = "Target Support Files/Pods-WF-Test-ZhukovR/Pods-WF-Test-ZhukovR.release.xcconfig"; sourceTree = "<group>"; };
+		F99E70B0EF174FE8466E636C /* Pods_WF_Test_ZhukovR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WF_Test_ZhukovR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC1A398F284C089F00A01B72 /* WF-Test-ZhukovR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WF-Test-ZhukovR.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC1A3992284C089F00A01B72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC1A3996284C089F00A01B72 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -43,12 +47,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AA0AB499D6A877729452E08 /* Pods_WF_Test_ZhukovR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6EE60465E206DECC93F1528F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8397BCC8ECE8D88D661CA5E2 /* Pods-WF-Test-ZhukovR.debug.xcconfig */,
+				C50CF094C52E3B978783F949 /* Pods-WF-Test-ZhukovR.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CB1D9516E7D684A762E93DC3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F99E70B0EF174FE8466E636C /* Pods_WF_Test_ZhukovR.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FC113514284E68F700CC770E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +89,8 @@
 			children = (
 				FC1A3991284C089F00A01B72 /* WF-Test-ZhukovR */,
 				FC1A3990284C089F00A01B72 /* Products */,
+				6EE60465E206DECC93F1528F /* Pods */,
+				CB1D9516E7D684A762E93DC3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,9 +149,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FC1A39A3284C08A000A01B72 /* Build configuration list for PBXNativeTarget "WF-Test-ZhukovR" */;
 			buildPhases = (
+				86E1D6AEC6B5ABAB4E601C83 /* [CP] Check Pods Manifest.lock */,
 				FC1A398B284C089F00A01B72 /* Sources */,
 				FC1A398C284C089F00A01B72 /* Frameworks */,
 				FC1A398D284C089F00A01B72 /* Resources */,
+				A01CC6C2E7D2F6FAD8CD1D6D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -181,6 +208,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		86E1D6AEC6B5ABAB4E601C83 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WF-Test-ZhukovR-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A01CC6C2E7D2F6FAD8CD1D6D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WF-Test-ZhukovR/Pods-WF-Test-ZhukovR-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WF-Test-ZhukovR/Pods-WF-Test-ZhukovR-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WF-Test-ZhukovR/Pods-WF-Test-ZhukovR-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FC1A398B284C089F00A01B72 /* Sources */ = {
@@ -332,6 +401,7 @@
 		};
 		FC1A39A4284C08A000A01B72 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8397BCC8ECE8D88D661CA5E2 /* Pods-WF-Test-ZhukovR.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -359,6 +429,7 @@
 		};
 		FC1A39A5284C08A000A01B72 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C50CF094C52E3B978783F949 /* Pods-WF-Test-ZhukovR.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

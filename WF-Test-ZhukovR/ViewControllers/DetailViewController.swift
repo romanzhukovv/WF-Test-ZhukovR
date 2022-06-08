@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DetailViewController: UIViewController {
-    var photo: Photo?
+    private let photo: Photo
     
     private let photoImageView = UIImageView()
     private let verticalStackView = UIStackView()
@@ -18,11 +19,20 @@ class DetailViewController: UIViewController {
     private let downloadsCountLabel = UILabel()
     private let favoriteButton = UIButton(type: .system)
     
+    init(photo: Photo) {
+        self.photo = photo
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        fetchFullSizePhoto(photo: photo ?? Photo(created_at: "", likes: 0, urls: Sizes(small: "", full: ""), user: User(name: "", location: ""), downloads: 0))
+        fetchFullSizePhoto(photo: photo)
         
         setupUIComponets()
     }
@@ -53,16 +63,16 @@ extension DetailViewController {
     private func setupUIComponets() {
         photoImageView.contentMode = .scaleAspectFit
         
-        authorNameLabel.text = photo?.user.name
+        authorNameLabel.text = photo.user.name
         authorNameLabel.textAlignment = .center
         
-        createdDateLabel.text = photo?.created_at
+        createdDateLabel.text = photo.created_at
         createdDateLabel.textAlignment = .center
         
-        locationLabel.text = photo?.user.location ?? "No location data"
+        locationLabel.text = photo.user.location ?? "No location data"
         locationLabel.textAlignment = .center
         
-        downloadsCountLabel.text = "\(photo?.downloads ?? 0)"
+        downloadsCountLabel.text = "\(photo.downloads ?? 0)"
         downloadsCountLabel.textAlignment = .center
         
         verticalStackView.spacing = 15
@@ -86,14 +96,8 @@ extension DetailViewController {
     }
     
     private func fetchFullSizePhoto(photo: Photo) {
-        NetworkManager.shared.fetchImage(from: photo.urls.full) { result in
-            switch result {
-            case .success(let photo):
-                self.photoImageView.image = UIImage(data: photo)
-            case .failure(let error):
-                print(error)
-            }
-        }
+        guard let url = URL(string: photo.urls.full) else { return }
+        photoImageView.kf.setImage(with: url)
     }
     
     @objc private func favoriteButtonAction() {

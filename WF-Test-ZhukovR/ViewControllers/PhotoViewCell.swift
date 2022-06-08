@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PhotoViewCell: UICollectionViewCell {
     private let photoImageView = UIImageView()
@@ -31,14 +32,16 @@ class PhotoViewCell: UICollectionViewCell {
 
 extension PhotoViewCell {
     func configureCell(photo: Photo) {
-        NetworkManager.shared.fetchImage(from: photo.urls.small) { result in
-            switch result {
-            case .success(let photo):
-                self.photoImageView.image = UIImage(data: photo)
-            case .failure(let error):
-                print(error)
-            }
-        }
+//        NetworkManager.shared.fetchImage(from: photo.urls.small) { result in
+//            switch result {
+//            case .success(let photo):
+//                self.photoImageView.image = UIImage(data: photo)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+        guard let url = URL(string: photo.urls.small) else { return }
+        photoImageView.kf.setImage(with: url)
     }
     
     private func addConstraints() {

@@ -55,13 +55,15 @@ class PhotosCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailVC = DetailViewController()
+        let photo: Photo
         
         if self.isSearching {
-            detailVC.photo = self.searchedPhotos?.results?[indexPath.row] ?? Photo(created_at: "", likes: 0, urls: Sizes(small: "", full: ""), user: User(name: "", location: ""), downloads: 0)
+            photo = self.searchedPhotos?.results?[indexPath.row] ?? Photo(created_at: "", likes: 0, urls: Sizes(small: "", full: ""), user: User(name: "", location: ""), downloads: 0)
         } else {
-            detailVC.photo = self.photos[indexPath.row]
+            photo = self.photos[indexPath.row]
         }
+        
+        let detailVC = DetailViewController(photo: photo)
         
         detailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)
