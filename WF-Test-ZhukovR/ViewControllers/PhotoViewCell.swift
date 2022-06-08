@@ -9,6 +9,8 @@ import UIKit
 import Kingfisher
 
 class PhotoViewCell: UICollectionViewCell {
+    static let reuseId = "PhotoCell"
+    
     private let photoImageView = UIImageView()
     
     override init(frame: CGRect) {

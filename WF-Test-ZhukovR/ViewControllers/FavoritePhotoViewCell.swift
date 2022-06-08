@@ -8,7 +8,6 @@
 import UIKit
 
 class FavoritePhotoViewCell: UITableViewCell {
-
     static let reuseId = "FavoritePhotoCell"
     
     private let nameLabel = UILabel()
@@ -41,7 +40,6 @@ extension FavoritePhotoViewCell {
         contentView.addSubview(nameLabel)
         
         addConstraits()
-        
     }
     
     private func addConstraits() {
@@ -53,7 +51,7 @@ extension FavoritePhotoViewCell {
             photoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
             photoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
             photoImageView.widthAnchor.constraint(equalToConstant: contentView.bounds.size.width / 4),
-            photoImageView.widthAnchor.constraint(equalTo: photoImageView.heightAnchor, multiplier: 1),
+            photoImageView.heightAnchor.constraint(equalTo: photoImageView.widthAnchor, multiplier: 1),
             
             nameLabel.leadingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: 20),
             nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),

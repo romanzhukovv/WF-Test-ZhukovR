@@ -7,8 +7,6 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class PhotosCollectionViewController: UICollectionViewController {
     private var photos: [Photo] = []
     private var searchedPhotos: SearchedPhotos?
@@ -26,7 +24,7 @@ class PhotosCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
-        collectionView!.register(PhotoViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView!.register(PhotoViewCell.self, forCellWithReuseIdentifier: PhotoViewCell.reuseId)
         fetchPhotosData()
         setupSearchController()
     }
@@ -41,7 +39,7 @@ class PhotosCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoViewCell.reuseId, for: indexPath) as! PhotoViewCell
         let photo: Photo
         
         if isSearching {
@@ -62,7 +60,7 @@ class PhotosCollectionViewController: UICollectionViewController {
             guard let searchedPhoto = searchedPhotos?.results?[indexPath.row] else { return }
             photo = searchedPhoto
         } else {
-            photo = self.photos[indexPath.row]
+            photo = photos[indexPath.row]
         }
         
         let detailVC = DetailViewController(photo: photo)
