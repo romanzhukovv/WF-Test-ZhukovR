@@ -42,10 +42,11 @@ class PhotosCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoViewCell
-        var photo = Photo(created_at: "", likes: 0, urls: Sizes(small: "", full: ""), user: User(name: "", location: ""), downloads: 0)
+        let photo: Photo
         
         if isSearching {
-            photo = searchedPhotos?.results?[indexPath.row] ?? Photo(created_at: "", likes: 0, urls: Sizes(small: "", full: ""), user: User(name: "", location: ""), downloads: 0)
+            guard let searchedPhoto = searchedPhotos?.results?[indexPath.row] else { return cell }
+            photo = searchedPhoto
         } else {
             photo = photos[indexPath.row]
         }
@@ -58,7 +59,8 @@ class PhotosCollectionViewController: UICollectionViewController {
         let photo: Photo
         
         if self.isSearching {
-            photo = self.searchedPhotos?.results?[indexPath.row] ?? Photo(created_at: "", likes: 0, urls: Sizes(small: "", full: ""), user: User(name: "", location: ""), downloads: 0)
+            guard let searchedPhoto = searchedPhotos?.results?[indexPath.row] else { return }
+            photo = searchedPhoto
         } else {
             photo = self.photos[indexPath.row]
         }
