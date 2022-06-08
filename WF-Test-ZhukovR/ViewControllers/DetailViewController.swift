@@ -11,11 +11,12 @@ class DetailViewController: UIViewController {
     var photo: Photo?
     
     private let photoImageView = UIImageView()
-    private let favoriteButton = UIButton(type: .system)
+    private let verticalStackView = UIStackView()
     private let authorNameLabel = UILabel()
     private let createdDateLabel = UILabel()
     private let locationLabel = UILabel()
     private let downloadsCountLabel = UILabel()
+    private let favoriteButton = UIButton(type: .system)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,33 @@ class DetailViewController: UIViewController {
         
         fetchFullSizePhoto(photo: photo ?? Photo(created_at: "", likes: 0, urls: Sizes(small: "", full: ""), user: User(name: "", location: ""), downloads: 0))
         
+        setupUIComponets()
+    }
+
+}
+
+extension DetailViewController {
+    private func addConstraints() {
+        photoImageView.translatesAutoresizingMaskIntoConstraints = false
+        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
+        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            photoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -40),
+            photoImageView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            photoImageView.heightAnchor.constraint(equalToConstant: 300),
+            
+            verticalStackView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 15),
+            verticalStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            verticalStackView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            
+            favoriteButton.topAnchor.constraint(equalTo: downloadsCountLabel.bottomAnchor, constant: 15),
+            favoriteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 200)
+        ])
+    }
+    
+    private func setupUIComponets() {
         photoImageView.contentMode = .scaleAspectFit
         
         authorNameLabel.text = photo?.user.name
@@ -37,6 +65,9 @@ class DetailViewController: UIViewController {
         downloadsCountLabel.text = "\(photo?.downloads ?? 0)"
         downloadsCountLabel.textAlignment = .center
         
+        verticalStackView.spacing = 15
+        verticalStackView.axis = .vertical
+        
         favoriteButton.setTitle("Add to favorite", for: .normal)
         favoriteButton.setTitleColor(.white, for: .normal)
         favoriteButton.backgroundColor = .lightGray
@@ -44,51 +75,14 @@ class DetailViewController: UIViewController {
         favoriteButton.layer.cornerRadius = 10
         
         view.addSubview(photoImageView)
-        view.addSubview(authorNameLabel)
-        view.addSubview(createdDateLabel)
-        view.addSubview(locationLabel)
-        view.addSubview(downloadsCountLabel)
+        view.addSubview(verticalStackView)
+        verticalStackView.addArrangedSubview(authorNameLabel)
+        verticalStackView.addArrangedSubview(createdDateLabel)
+        verticalStackView.addArrangedSubview(locationLabel)
+        verticalStackView.addArrangedSubview(downloadsCountLabel)
         view.addSubview(favoriteButton)
         
         addConstraints()
-    }
-
-}
-
-extension DetailViewController {
-    private func addConstraints() {
-        photoImageView.translatesAutoresizingMaskIntoConstraints = false
-        authorNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        createdDateLabel.translatesAutoresizingMaskIntoConstraints = false
-        locationLabel.translatesAutoresizingMaskIntoConstraints = false
-        downloadsCountLabel.translatesAutoresizingMaskIntoConstraints = false
-        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            photoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -40),
-            photoImageView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            photoImageView.heightAnchor.constraint(equalToConstant: 300),
-            
-            authorNameLabel.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 15),
-            authorNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            authorNameLabel.widthAnchor.constraint(equalTo: view.widthAnchor),
-            
-            createdDateLabel.topAnchor.constraint(equalTo: authorNameLabel.bottomAnchor, constant: 15),
-            createdDateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            createdDateLabel.widthAnchor.constraint(equalTo: view.widthAnchor),
-            
-            locationLabel.topAnchor.constraint(equalTo: createdDateLabel.bottomAnchor, constant: 15),
-            locationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            locationLabel.widthAnchor.constraint(equalTo: view.widthAnchor),
-            
-            downloadsCountLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 15),
-            downloadsCountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            downloadsCountLabel.widthAnchor.constraint(equalTo: view.widthAnchor),
-            
-            favoriteButton.topAnchor.constraint(equalTo: downloadsCountLabel.bottomAnchor, constant: 15),
-            favoriteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            favoriteButton.widthAnchor.constraint(equalToConstant: 200)
-        ])
     }
     
     private func fetchFullSizePhoto(photo: Photo) {
@@ -103,6 +97,14 @@ extension DetailViewController {
     }
     
     @objc private func favoriteButtonAction() {
-        print("tap")
+        showAlert()
+    }
+    
+    private func showAlert() {
+        let alertController = UIAlertController(title: "Saving", message: "Photo was save to favorite list", preferredStyle: .alert)
+        let submitAction = UIAlertAction(title: "Ok", style: .default)
+        alertController.addAction(submitAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
 }

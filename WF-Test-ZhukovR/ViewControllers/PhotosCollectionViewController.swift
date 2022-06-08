@@ -82,23 +82,25 @@ extension PhotosCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension PhotosCollectionViewController: UISearchResultsUpdating {
+extension PhotosCollectionViewController: UISearchBarDelegate {
     private func setupSearchController() {
-        searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search photo"
         navigationItem.searchController = searchController
-        definesPresentationContext = true
+        searchController.searchBar.delegate = self
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
-        print("isEmpty \(searchBarIsEmpty)")
-        print("isActive \(searchController.isActive)")
-        
-        if isSearching {
-            searchPhotosData(query: searchController.searchBar.text ?? "")
-        } else if !searchController.isActive {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchPhotosData(query: searchController.searchBar.text ?? "")
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        if !searchBarIsEmpty && searchedPhotos != nil {
             collectionView.reloadData()
+            searchedPhotos = nil
+        } else if searchBarIsEmpty && searchedPhotos != nil {
+            collectionView.reloadData()
+            searchedPhotos = nil
         }
     }
 }
