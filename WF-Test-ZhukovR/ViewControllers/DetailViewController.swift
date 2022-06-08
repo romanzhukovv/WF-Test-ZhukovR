@@ -101,7 +101,7 @@ extension DetailViewController {
     }
     
     private func showAlert() {
-        let alertController = UIAlertController(title: "Saving", message: "Photo was save to favorite list", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Saving", message: "Photo was saved to favorite list", preferredStyle: .alert)
         let submitAction = UIAlertAction(title: "Ok", style: .default)
         alertController.addAction(submitAction)
         

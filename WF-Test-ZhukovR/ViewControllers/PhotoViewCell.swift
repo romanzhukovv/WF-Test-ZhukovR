@@ -12,17 +12,20 @@ class PhotoViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        
         photoImageView.contentMode = .scaleAspectFill
         photoImageView.clipsToBounds = true
-        
         contentView.addSubview(photoImageView)
         addConstraints()
-        
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        photoImageView.image = nil
     }
 }
 
