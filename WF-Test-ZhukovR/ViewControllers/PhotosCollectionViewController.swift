@@ -28,6 +28,11 @@ class PhotosCollectionViewController: UICollectionViewController {
         fetchPhotosData()
         setupSearchController()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
+    }
 
     // MARK: UICollectionViewDataSource
     

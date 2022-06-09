@@ -100,7 +100,6 @@ extension DetailViewController {
     }
     
     @objc private func favoriteButtonAction() {
-        
         showAlert(isFavorite: photo.isFavorite ?? false)
     }
     

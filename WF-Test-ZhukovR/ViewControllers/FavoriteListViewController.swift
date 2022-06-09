@@ -12,12 +12,12 @@ import Kingfisher
 class FavoriteListViewController: UITableViewController {
     var favoritePhotos: Results<Photo>!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(FavoritePhotoViewCell.self, forCellReuseIdentifier: FavoritePhotoViewCell.reuseId)
         tableView.backgroundColor = .white
         favoritePhotos = StorageManager.shared.realm.objects(Photo.self)
+        tableView.rowHeight = UIScreen.main.bounds.width / 4
     }
     
     override func viewWillAppear(_ animated: Bool) {

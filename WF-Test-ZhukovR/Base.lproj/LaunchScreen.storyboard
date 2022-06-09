@@ -23,6 +23,49 @@
             </objects>
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="K5V-OE-beT">
+            <objects>
+                <tableViewController id="S6v-tw-ayr" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="wbf-xp-kfj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="147" id="G6H-cF-fRc">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="147"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G6H-cF-fRc" id="WQp-a4-gHJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="147"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EJT-YR-L1u">
+                                            <rect key="frame" x="10" y="10" width="103.5" height="127"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="127" id="6JD-pW-btv"/>
+                                                <constraint firstAttribute="width" constant="103.5" id="QFX-VG-HvR"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="EJT-YR-L1u" secondAttribute="bottom" constant="10" id="2mK-KR-gt0"/>
+                                        <constraint firstItem="EJT-YR-L1u" firstAttribute="leading" secondItem="WQp-a4-gHJ" secondAttribute="leading" constant="10" id="4do-60-NlL"/>
+                                        <constraint firstItem="EJT-YR-L1u" firstAttribute="top" secondItem="WQp-a4-gHJ" secondAttribute="top" constant="10" id="Sca-SW-33L"/>
+                                        <constraint firstAttribute="trailing" secondItem="EJT-YR-L1u" secondAttribute="trailing" constant="300.5" id="kYr-oS-vLq"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="S6v-tw-ayr" id="JGL-d2-bQo"/>
+                            <outlet property="delegate" destination="S6v-tw-ayr" id="8Jz-zn-3Ra"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nca-cN-BUg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="730.43478260869574" y="380.35714285714283"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">

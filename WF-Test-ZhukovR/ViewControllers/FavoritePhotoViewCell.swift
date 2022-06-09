@@ -15,8 +15,6 @@ class FavoritePhotoViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -48,10 +46,9 @@ extension FavoritePhotoViewCell {
         
         NSLayoutConstraint.activate([
             photoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            photoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
-            photoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
             photoImageView.widthAnchor.constraint(equalToConstant: contentView.bounds.size.width / 4),
             photoImageView.heightAnchor.constraint(equalTo: photoImageView.widthAnchor, multiplier: 1),
+            photoImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
             nameLabel.leadingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: 20),
             nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
