@@ -8,8 +8,7 @@
 import RealmSwift
 
 class Photo: Object, Codable {
-    @Persisted var isFavorite: Bool?
-
+    @Persisted(primaryKey: true) var id: String?
     @Persisted var created_at: String?
     @Persisted var likes: Int?
     @Persisted var urls : Sizes?

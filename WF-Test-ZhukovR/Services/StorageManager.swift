@@ -16,20 +16,19 @@ class StorageManager {
     
     func savePhoto(photo: Photo) {
         write {
-            realm.add(photo)
+            let photoCopy = realm.create(Photo.self, value: photo, update: .all)
+            realm.add(photoCopy)
         }
     }
     
     func deletePhoto(photo: Photo) {
         write {
-            realm.delete(photo)
+            realm.delete(realm.object(ofType: Photo.self, forPrimaryKey: photo.id) ?? Photo())
         }
     }
     
-    func photoDidFavorite(photo: Photo) {
-        write {
-            photo.setValue(true, forKey: "isFavorite")
-        }
+    func checkFavorite(photo: Photo) -> Bool {
+        return realm.object(ofType: Photo.self, forPrimaryKey: photo.id) != nil
     }
     
     private func write(completion: () -> Void) {

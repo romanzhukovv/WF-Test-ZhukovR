@@ -85,9 +85,9 @@ extension DetailViewController {
         verticalStackView.spacing = 15
         verticalStackView.axis = .vertical
         
-        favoriteButton.setTitle(photo.isFavorite ?? false ? "Delete from favorite" : "Save to favorite", for: .normal)
+        favoriteButton.setTitle(StorageManager.shared.checkFavorite(photo: photo) ? "Delete from favorite" : "Save to favorite", for: .normal)
         favoriteButton.setTitleColor(.white, for: .normal)
-        favoriteButton.backgroundColor = photo.isFavorite ?? false ? .systemRed : .systemBlue
+        favoriteButton.backgroundColor = StorageManager.shared.checkFavorite(photo: photo) ? .systemRed : .systemBlue
         favoriteButton.addTarget(self, action: #selector(favoriteButtonAction), for: .touchUpInside)
         favoriteButton.layer.cornerRadius = 10
         
@@ -112,7 +112,7 @@ extension DetailViewController {
     }
     
     @objc private func favoriteButtonAction() {
-        showAlert(isFavorite: photo.isFavorite ?? false)
+        showAlert(isFavorite: StorageManager.shared.checkFavorite(photo: photo))
     }
     
     private func showAlert(isFavorite: Bool) {
@@ -125,10 +125,9 @@ extension DetailViewController {
                 self.navigationController?.popViewController(animated: true)
             } else {
                 StorageManager.shared.savePhoto(photo: self.photo)
-                StorageManager.shared.photoDidFavorite(photo: self.photo)
                 
-                self.favoriteButton.setTitle(self.photo.isFavorite ?? false ? "Delete from favorite" : "Save to favorite", for: .normal)
-                self.favoriteButton.backgroundColor = self.photo.isFavorite ?? false ? .systemRed : .systemBlue
+                self.favoriteButton.setTitle(StorageManager.shared.checkFavorite(photo: self.photo) ? "Delete from favorite" : "Save to favorite", for: .normal)
+                self.favoriteButton.backgroundColor = StorageManager.shared.checkFavorite(photo: self.photo) ? .systemRed : .systemBlue
             }
         }
         alertController.addAction(submitAction)
