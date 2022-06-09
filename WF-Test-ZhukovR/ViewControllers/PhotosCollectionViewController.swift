@@ -28,11 +28,6 @@ class PhotosCollectionViewController: UICollectionViewController {
         fetchPhotosData()
         setupSearchController()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        collectionView.reloadData()
-//    }
 
     // MARK: UICollectionViewDataSource
     
@@ -126,9 +121,7 @@ extension PhotosCollectionViewController {
     }
     
     private func searchPhotosData(query: String) {
-        let url = "https://api.unsplash.com/search/photos?page=1&query=\(query)&client_id=j0jvFBCxGG342dl2oyuw497E6Eh7eMvCOQz8gu-U5Ow"
-        
-        NetworkManager.shared.searchPhotos(url: url) { result in
+        NetworkManager.shared.searchPhotos(query: query) { result in
             switch result {
             case .success(let data):
                 self.searchedPhotos = data

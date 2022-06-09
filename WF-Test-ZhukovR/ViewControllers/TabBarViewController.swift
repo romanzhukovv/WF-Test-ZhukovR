@@ -21,12 +21,6 @@ extension TabBarViewController {
         UITabBar.appearance().barTintColor = .systemBackground
         tabBar.tintColor = .label
         
-//        let appearance = UITabBarAppearance()
-//        appearance.configureWithOpaqueBackground()
-//        appearance.backgroundColor = .white
-//        tabBar.standardAppearance = appearance
-//        tabBar.scrollEdgeAppearance = tabBar.standardAppearance
-        
         viewControllers = [
             createNavController(for: PhotosCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout()),
                                    title: "Photos",

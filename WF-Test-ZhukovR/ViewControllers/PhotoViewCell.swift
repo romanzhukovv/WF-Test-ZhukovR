@@ -15,11 +15,6 @@ class PhotoViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        
-        photoImageView.contentMode = .scaleAspectFill
-        photoImageView.clipsToBounds = true
-        contentView.addSubview(photoImageView)
-        addConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -36,6 +31,11 @@ extension PhotoViewCell {
     func configureCell(photo: Photo) {
         guard let url = URL(string: photo.urls?.small ?? "") else { return }
         photoImageView.kf.setImage(with: url)
+        
+        photoImageView.contentMode = .scaleAspectFill
+        photoImageView.clipsToBounds = true
+        contentView.addSubview(photoImageView)
+        addConstraints()
     }
     
     private func addConstraints() {

@@ -43,8 +43,8 @@ class NetworkManager {
         }.resume()
     }
     
-    func searchPhotos(url: String, completion: @escaping(Result<SearchedPhotos, NetworkError>) -> Void) {
-        guard let url = URL(string: url) else {
+    func searchPhotos(query: String, completion: @escaping(Result<SearchedPhotos, NetworkError>) -> Void) {
+        guard let url = URL(string: "https://api.unsplash.com/search/photos?page=1&query=\(query)&client_id=j0jvFBCxGG342dl2oyuw497E6Eh7eMvCOQz8gu-U5Ow") else {
             completion(.failure(.invalidURL))
             return
         }
