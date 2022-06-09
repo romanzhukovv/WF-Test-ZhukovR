@@ -11,6 +11,7 @@ import Kingfisher
 class DetailViewController: UIViewController {
     private let photo: Photo
     
+    private let activityIndicator = UIActivityIndicatorView()
     private let photoImageView = UIImageView()
     private let verticalStackView = UIStackView()
     private let authorNameLabel = UILabel()
@@ -32,6 +33,10 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        activityIndicator.hidesWhenStopped = true
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        
         fetchFullSizePhoto(photo: photo)
         setupUIComponets()
     }
@@ -40,14 +45,18 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController {
     private func addConstraints() {
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         photoImageView.translatesAutoresizingMaskIntoConstraints = false
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         favoriteButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.topAnchor.constraint(equalTo: photoImageView.centerYAnchor),
+            
             photoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -40),
             photoImageView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            photoImageView.heightAnchor.constraint(equalToConstant: 300),
+            photoImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.45),
             
             verticalStackView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 15),
             verticalStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -96,7 +105,10 @@ extension DetailViewController {
     
     private func fetchFullSizePhoto(photo: Photo) {
         guard let url = URL(string: photo.urls?.full ?? "") else { return }
-        photoImageView.kf.setImage(with: url)
+        
+        photoImageView.kf.setImage(with: url) { _ in
+            self.activityIndicator.stopAnimating()
+        }
     }
     
     @objc private func favoriteButtonAction() {
