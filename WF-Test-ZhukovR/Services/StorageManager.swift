@@ -15,8 +15,30 @@ class StorageManager {
     private init() {}
     
     func savePhoto(photo: Photo) {
-        try! realm.write {
+        write {
             realm.add(photo)
+        }
+    }
+    
+    func deletePhoto(photo: Photo) {
+        write {
+            realm.delete(photo)
+        }
+    }
+    
+    func photoDidFavorite(photo: Photo) {
+        write {
+            photo.setValue(true, forKey: "isFavorite")
+        }
+    }
+    
+    private func write(completion: () -> Void) {
+        do {
+            try realm.write {
+                completion()
+            }
+        } catch {
+            print(error)
         }
     }
 }

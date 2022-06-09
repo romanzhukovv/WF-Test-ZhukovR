@@ -8,19 +8,21 @@
 import RealmSwift
 
 class Photo: Object, Codable {
-    @Persisted var created_at = ""
-    @Persisted var likes = 0
+    @Persisted var isFavorite: Bool?
+
+    @Persisted var created_at: String?
+    @Persisted var likes: Int?
     @Persisted var urls : Sizes?
     @Persisted var user: User?
-    @Persisted var downloads = 0
+    @Persisted var downloads: Int?
 }
 
 class Sizes: Object, Codable {
-    @Persisted var small = ""
-    @Persisted var full = ""
+    @Persisted var small: String?
+    @Persisted var full: String?
 }
 
 class User: Object, Codable {
-    @Persisted var name = ""
+    @Persisted var name: String?
     @Persisted var location: String?
 }

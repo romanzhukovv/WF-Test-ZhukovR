@@ -33,7 +33,7 @@ class PhotosCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isSearching {
-            return searchedPhotos?.results?.count ?? 0
+            return searchedPhotos?.results.count ?? 0
         }
         return photos.count
     }
@@ -43,7 +43,7 @@ class PhotosCollectionViewController: UICollectionViewController {
         let photo: Photo
         
         if isSearching {
-            guard let searchedPhoto = searchedPhotos?.results?[indexPath.row] else { return cell }
+            guard let searchedPhoto = searchedPhotos?.results[indexPath.row] else { return cell }
             photo = searchedPhoto
         } else {
             photo = photos[indexPath.row]
@@ -57,7 +57,7 @@ class PhotosCollectionViewController: UICollectionViewController {
         let photo: Photo
         
         if self.isSearching {
-            guard let searchedPhoto = searchedPhotos?.results?[indexPath.row] else { return }
+            guard let searchedPhoto = searchedPhotos?.results[indexPath.row] else { return }
             photo = searchedPhoto
         } else {
             photo = photos[indexPath.row]

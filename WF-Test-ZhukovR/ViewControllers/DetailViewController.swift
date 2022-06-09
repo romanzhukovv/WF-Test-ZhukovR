@@ -33,7 +33,6 @@ class DetailViewController: UIViewController {
         view.backgroundColor = .white
         
         fetchFullSizePhoto(photo: photo)
-        
         setupUIComponets()
     }
 
@@ -72,15 +71,15 @@ extension DetailViewController {
         locationLabel.text = photo.user?.location ?? "No location data"
         locationLabel.textAlignment = .center
         
-        downloadsCountLabel.text = "\(photo.downloads)"
+        downloadsCountLabel.text = "\(photo.downloads ?? 0)"
         downloadsCountLabel.textAlignment = .center
         
         verticalStackView.spacing = 15
         verticalStackView.axis = .vertical
         
-        favoriteButton.setTitle("Add to favorite", for: .normal)
+        favoriteButton.setTitle(photo.isFavorite ?? false ? "Delete from favorite" : "Save to favorite", for: .normal)
         favoriteButton.setTitleColor(.white, for: .normal)
-        favoriteButton.backgroundColor = .lightGray
+        favoriteButton.backgroundColor = photo.isFavorite ?? false ? .systemRed : .systemBlue
         favoriteButton.addTarget(self, action: #selector(favoriteButtonAction), for: .touchUpInside)
         favoriteButton.layer.cornerRadius = 10
         
@@ -101,13 +100,26 @@ extension DetailViewController {
     }
     
     @objc private func favoriteButtonAction() {
-        StorageManager.shared.savePhoto(photo: photo)
-        showAlert()
+        
+        showAlert(isFavorite: photo.isFavorite ?? false)
     }
     
-    private func showAlert() {
-        let alertController = UIAlertController(title: "Saving", message: "Photo was saved to favorite list", preferredStyle: .alert)
-        let submitAction = UIAlertAction(title: "Ok", style: .default)
+    private func showAlert(isFavorite: Bool) {
+        let alertController = UIAlertController(title: isFavorite ? "Deleting" : "Saving",
+                                                message: isFavorite ? "Photo was deleted from favorite list" : "Photo was saved to favorite list" ,
+                                                preferredStyle: .alert)
+        let submitAction = UIAlertAction(title: "Ok", style: .default) { _ in
+            if isFavorite {
+                StorageManager.shared.deletePhoto(photo: self.photo)
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                StorageManager.shared.savePhoto(photo: self.photo)
+                StorageManager.shared.photoDidFavorite(photo: self.photo)
+                
+                self.favoriteButton.setTitle(self.photo.isFavorite ?? false ? "Delete from favorite" : "Save to favorite", for: .normal)
+                self.favoriteButton.backgroundColor = self.photo.isFavorite ?? false ? .systemRed : .systemBlue
+            }
+        }
         alertController.addAction(submitAction)
         
         present(alertController, animated: true, completion: nil)
