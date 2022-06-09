@@ -33,6 +33,7 @@ extension FavoritePhotoViewCell {
         photoImageView.layer.masksToBounds = true
         
         nameLabel.text = photo.user?.name
+        nameLabel.numberOfLines = 0
         
         contentView.addSubview(photoImageView)
         contentView.addSubview(nameLabel)
@@ -46,8 +47,10 @@ extension FavoritePhotoViewCell {
         
         NSLayoutConstraint.activate([
             photoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            photoImageView.widthAnchor.constraint(equalToConstant: contentView.frame.size.width / 3.5),
-            photoImageView.heightAnchor.constraint(equalTo: photoImageView.widthAnchor, multiplier: 1),
+//            photoImageView.widthAnchor.constraint(equalToConstant: contentView.frame.size.width / 3.5),
+//            photoImageView.heightAnchor.constraint(equalTo: photoImageView.widthAnchor, multiplier: 1),
+            photoImageView.widthAnchor.constraint(equalToConstant: 100),
+            photoImageView.heightAnchor.constraint(equalToConstant: 100),
             photoImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
             nameLabel.leadingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: 20),

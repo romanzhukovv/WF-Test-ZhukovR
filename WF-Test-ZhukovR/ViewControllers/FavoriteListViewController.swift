@@ -17,7 +17,7 @@ class FavoriteListViewController: UITableViewController {
         tableView.register(FavoritePhotoViewCell.self, forCellReuseIdentifier: FavoritePhotoViewCell.reuseId)
         tableView.backgroundColor = .white
         favoritePhotos = StorageManager.shared.realm.objects(Photo.self)
-        tableView.rowHeight = UIScreen.main.bounds.width / 3
+        tableView.rowHeight = 140
     }
     
     override func viewWillAppear(_ animated: Bool) {

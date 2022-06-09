@@ -31,16 +31,9 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        
-        fetchFullSizePhoto(photo: photo)
-        setupUIComponets()
+    
+        setupUI()
     }
-
 }
 
 extension DetailViewController {
@@ -68,8 +61,14 @@ extension DetailViewController {
         ])
     }
     
-    private func setupUIComponets() {
+    private func setupUI() {
+        view.backgroundColor = .white
+        
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
+        
         photoImageView.contentMode = .scaleAspectFit
+        fetchFullSizePhoto(photo: photo)
         
         authorNameLabel.text = photo.user?.name
         authorNameLabel.textAlignment = .center
@@ -92,6 +91,7 @@ extension DetailViewController {
         favoriteButton.addTarget(self, action: #selector(favoriteButtonAction), for: .touchUpInside)
         favoriteButton.layer.cornerRadius = 10
         
+        view.addSubview(activityIndicator)
         view.addSubview(photoImageView)
         view.addSubview(verticalStackView)
         verticalStackView.addArrangedSubview(authorNameLabel)
