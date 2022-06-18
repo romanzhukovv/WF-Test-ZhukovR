@@ -36,7 +36,6 @@ class FavoriteListViewController: UITableViewController {
         let photo = favoritePhotos[indexPath.row]
 
         cell.configureCell(photo: photo)
-        
         return cell
     }
     
