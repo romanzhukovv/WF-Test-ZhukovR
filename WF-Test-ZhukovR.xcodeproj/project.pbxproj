@@ -151,6 +151,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FC1A39A3284C08A000A01B72 /* Build configuration list for PBXNativeTarget "WF-Test-ZhukovR" */;
 			buildPhases = (
+				FCC5C81C2861152100B55DB0 /* ShellScript */,
 				86E1D6AEC6B5ABAB4E601C83 /* [CP] Check Pods Manifest.lock */,
 				FC1A398B284C089F00A01B72 /* Sources */,
 				FC1A398C284C089F00A01B72 /* Frameworks */,
@@ -250,6 +251,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WF-Test-ZhukovR/Pods-WF-Test-ZhukovR-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		FCC5C81C2861152100B55DB0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

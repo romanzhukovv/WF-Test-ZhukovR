@@ -11,7 +11,7 @@ import Kingfisher
 
 class FavoriteListViewController: UITableViewController {
     var favoritePhotos: Results<Photo>!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(FavoritePhotoViewCell.self, forCellReuseIdentifier: FavoritePhotoViewCell.reuseId)
@@ -19,7 +19,7 @@ class FavoriteListViewController: UITableViewController {
         favoritePhotos = StorageManager.shared.realm.objects(Photo.self)
         tableView.rowHeight = 140
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
