@@ -8,4 +8,5 @@ target 'WF-Test-ZhukovR' do
   # Pods for WF-Test-ZhukovR
   pod 'Kingfisher', '~> 7.0'
   pod 'RealmSwift', '~>10'
+  pod 'SwiftLint'
 end
