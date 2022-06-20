@@ -1,2 +1,0 @@
-#  Unsplash photo search
-
