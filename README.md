@@ -12,4 +12,4 @@
 
 ## Демонстрация функционала
 
-![Unsplash](https://github.com/romanzhukovv/WF-Test-ZhukovR/tree/main/GIFs/Unsplash.gif)
+![Unsplash](https://github.com/romanzhukovv/WF-Test-ZhukovR/blob/main/GIFs/Unsplash.gif)
