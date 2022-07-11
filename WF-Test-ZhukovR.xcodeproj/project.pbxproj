@@ -35,6 +35,7 @@
 		FC1A39A0284C08A000A01B72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC1A39A6284C090800A01B72 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FC1A39A8284D203800A01B72 /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
+		FC3A9356287CBC2B005C77FB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FC7670B1284D23810090BBE8 /* PhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
 		FC8F1C3B2851584C00DECD02 /* FavoritePhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePhotoViewCell.swift; sourceTree = "<group>"; };
 		FCC654B3284E69D400608736 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +90,7 @@
 		FC1A3986284C089F00A01B72 = {
 			isa = PBXGroup;
 			children = (
+				FC3A9356287CBC2B005C77FB /* README.md */,
 				FC1A3991284C089F00A01B72 /* WF-Test-ZhukovR */,
 				FC1A3990284C089F00A01B72 /* Products */,
 				6EE60465E206DECC93F1528F /* Pods */,
